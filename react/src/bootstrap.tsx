@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { createMemoryHistory } from "history";
 import App from "./App";
-import { HistoryStrategy } from "../../@types/shared-route";
+import { HistoryStrategy } from "../@types/route";
 
 const mount = ({
   mountPoint,

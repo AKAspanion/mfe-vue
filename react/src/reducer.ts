@@ -1,4 +1,4 @@
-import { ReactState, ReduxAction } from "../../@types/shared-store";
+import { ReactState, ReduxAction } from "../@types/store";
 
 const initialState: ReactState = {
   appName: "ReactApp",

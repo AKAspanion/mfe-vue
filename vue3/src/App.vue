@@ -1,18 +1,25 @@
 <template>
   <div style="margin:16px">
-    <div style="border: 1px solid red;padding: 16px">
-      <h1>Hello Vue3 App</h1>
-    </div>
-    <div style="padding: 8px">
-    </div>
-    <div style="border: 1px solid red;padding: 16px">
-      <h3>Vue3 App's Router</h3>
+    <div style="border: 1px solid #42b883;">
+      <div style="padding: 16px">
+
+        <h1>Hello from Vue3</h1>
+        <div style="padding: 2px">
+        </div>
+        <div style="display: flex;gap: 16px">
+          <router-link to="/page-1" class="nav-link">Go to vue page 1</router-link>
+          <router-link to="/page-2" class="nav-link">Go to vue page 2</router-link>
+          <router-link to="/react/page-1" class="nav-link">Go to react page 1</router-link>
+          <router-link to="/react/page-2" class="nav-link">Go to react page 2</router-link>
+        </div>
+      </div>
       <router-view />
     </div>
-    <router-link to="/react" class="nav-link">Go to react pages</router-link>
   </div>
 </template>
-
-<script>
-
-</script>
+<style>
+* {
+  margin: 0px;
+  padding: 0px;
+}
+</style>

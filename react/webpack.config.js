@@ -4,6 +4,7 @@ const path = require("path");
 const deps = require("./package.json").dependencies;
 
 module.exports = {
+  mode: "development",
   output: {
     publicPath: "http://localhost:3001/",
   },

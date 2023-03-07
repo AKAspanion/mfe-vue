@@ -3,32 +3,50 @@ const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-module.exports = (env = {}) => ({
+module.exports = () => ({
   mode: "development",
   cache: false,
   devtool: "source-map",
   optimization: {
     minimize: false,
   },
-  entry: path.resolve(__dirname, "./src/main.js"),
   output: {
-    publicPath: "auto",
+    publicPath: "http://localhost:3000/",
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+    watchFiles: ["src/**/*"],
+    historyApiFallback: true,
+    liveReload: true,
+    port: 3000,
   },
   resolve: {
-    extensions: [".vue", ".jsx", ".js", ".json"],
+    extensions: [".vue", ".tsx", ".ts", ".js", ".json"],
     alias: {
-      // this isn't technically needed, since the default `vue` entry for bundlers
-      // is a simple `export * from '@vue/runtime-dom`. However having this
-      // extra re-export somehow causes webpack to always invalidate the module
-      // on the first HMR update and causes the page to reload.
-      vue: "@vue/runtime-dom",
+      vue: "vue/dist/vue.esm-bundler.js",
     },
   },
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        use: "vue-loader",
+        test: /\.(ts|tsx)$/,
+        loader: "ts-loader",
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.vue$/i,
+        loader: "vue-loader",
+        options: {
+          esModule: true,
+        },
       },
       {
         test: /\.png$/,
@@ -65,18 +83,4 @@ module.exports = (env = {}) => ({
       template: path.resolve(__dirname, "./index.html"),
     }),
   ],
-  devServer: {
-    static: {
-      directory: path.join(__dirname),
-    },
-    compress: true,
-    port: 3002,
-    hot: true,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "X-Requested-With, content-type, Authorization",
-    },
-  },
 });
