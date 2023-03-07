@@ -1,10 +1,5 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "react/App": ["./react/src/App"],
-      "react/Bootstrap": ["./react/src/bootstrap"]
-    }
-  },
+  "compilerOptions": {},
   "include": ["react", "vue3"],
   "exclude": ["node_modules", "node_modules/*"]
 }
