@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "react/App": ["./react/src/App"],
+      "react/Bootstrap": ["./react/src/bootstrap"]
+    }
+  },
+  "exclude": ["node_modules", "node_modules/*"]
+}

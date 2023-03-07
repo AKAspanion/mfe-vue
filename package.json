@@ -1,0 +1,21 @@
+{
+  "name": "mfe-vue-react",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "workspaces": [
+    "react",
+    "vue3"
+  ],
+  "scripts": {
+    "start": "lerna run --parallel start",
+    "build": "lerna run --parallel build",
+    "build:start": "lerna run --parallel build:start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lerna": "^5.4.3"
+  }
+}
