@@ -2,7 +2,7 @@
   <div ref="reactApp">
   </div>
 </template>
-  
+
 <script lang="ts">
 
 import { mount } from "react/Bootstrap";
@@ -52,10 +52,9 @@ export default defineComponent({
 
       if (this.iswatch) {
         if (isInner) {
+          const detail = to.path.replace(this.app1Basename, "") || "/";
           window.dispatchEvent(
-            new CustomEvent("[vue3] navigated", {
-              detail: to.path.replace(this.app1Basename, ""),
-            })
+            new CustomEvent("[vue3] navigated", { detail })
           );
         } else {
           return true;
@@ -73,4 +72,3 @@ export default defineComponent({
   },
 });
 </script>
-  

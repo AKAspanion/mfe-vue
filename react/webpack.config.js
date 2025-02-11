@@ -3,10 +3,10 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const path = require("path");
 const deps = require("./package.json").dependencies;
 
-module.exports = {
+module.exports = (config = {}) => ({
   mode: "development",
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: "auto",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
@@ -61,4 +61,4 @@ module.exports = {
       template: "./public/index.html",
     }),
   ],
-};
+});
